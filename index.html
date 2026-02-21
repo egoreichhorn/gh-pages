@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background-color: #eabe57;
+      background-image: url("data:image/svg+xml,%3Csvg width='84' height='48' viewBox='0 0 84 48' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0h12v6H0V0zm28 8h12v6H28V8zm14-8h12v6H42V0zm14 0h12v6H56V0zm0 8h12v6H56V8zM42 8h12v6H42V8zm0 16h12v6H42v-6zm14-8h12v6H56v-6zm14 0h12v6H70v-6zm0-16h12v6H70V0zM28 32h12v6H28v-6zM14 16h12v6H14v-6zM0 24h12v6H0v-6zm0 8h12v6H0v-6zm14 0h12v6H14v-6zm14 8h12v6H28v-6zm-14 0h12v6H14v-6zm28 0h12v6H42v-6zm14-8h12v6H56v-6zm0-8h12v6H56v-6zm14 8h12v6H70v-6zm0 8h12v6H70v-6zM14 24h12v6H14v-6zm14-8h12v6H28v-6zM14 8h12v6H14V8zM0 8h12v6H0V8z' fill='%23e0b758' fill-opacity='0.76' fill-rule='evenodd'/%3E%3C/svg%3E");
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+
+      font-family: Arial;
+      letter-spacing: 2px;
+      color: #fff;
+    }
+
+    video {
+      border: 6px solid #e0b75800;
+      border-radius: 50%;
+      max-width: 100%;
+      max-height: 100%;
+      pointer-events: none;
+
+      box-shadow:
+          0 25px 50px rgba(184, 130, 20, 0.35),
+          0 15px 25px rgba(210, 160, 50, 0.25),
+          0 0 40px rgba(255, 215, 120, 0.4);
+    }
+
+    a {
+      display: inline-block;
+      margin-top: 20px;
+      text-decoration: none;
+      color: #fff8dc;
+      font-weight: bold;
+      transition: 0.3s ease;
+    }
+
+    a:hover {
+      color: #ffffff;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+<div style="text-align: center">
+  <h1>Welcome</h1>
+
+  <video
+      width="504"
+      height="504"
+      id="autoVideo"
+      src="./big-head-5.mp4"
+      muted
+      autoplay
+      loop
+      playsinline
+  ></video>
+
+  <br>
+
+  <a href="mailto:eichhornegor@gmail.com">
+    eichhornegor@gmail.com
+  </a>
+</div>
+
+<script>
+  const video = document.getElementById("autoVideo");
+
+  video.play();
+
+  video.addEventListener("pause", () => {
+    video.play();
+  });
+
+  video.addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    e.preventDefault();
+  });
+</script>
+
+</body>
+</html>
