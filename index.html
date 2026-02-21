@@ -19,7 +19,7 @@
       align-items: center;
       height: 100vh;
 
-      font-family: Arial;
+      font-family: Arial,serif;
       letter-spacing: 2px;
       color: #fff;
     }
@@ -62,7 +62,6 @@
       height="504"
       id="autoVideo"
       src="./big-head-5.mp4"
-      autoplay
       loop
       playsinline
   ></video>
@@ -77,19 +76,12 @@
 <script>
   const video = document.getElementById("autoVideo");
 
-  video.play();
-
-  video.addEventListener("pause", () => {
+  function startVideo() {
     video.play();
-  });
+    document.removeEventListener("click", startVideo);
+  }
 
-  video.addEventListener("contextmenu", (e) => {
-    e.preventDefault();
-  });
-
-  document.addEventListener("keydown", (e) => {
-    e.preventDefault();
-  });
+  document.addEventListener("click", startVideo);
 </script>
 
 </body>
