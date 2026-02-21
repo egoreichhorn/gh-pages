@@ -1,0 +1,46 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    # ✅ Запускаем только при пуше в master
+    branches:
+      - master
+    # ✅ И только если изменился именно index.html
+    paths:
+      - "index.html"
+
+permissions:
+  # ✅ Нужно для деплоя в GitHub Pages через Actions
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  # ✅ Чтобы не было гонок деплоя (новый деплой отменяет предыдущий)
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # ✅ Забираем репозиторий
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # ✅ Конфигурируем GitHub Pages
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # ✅ Упаковываем статический сайт как "artifact" (берём корень репозитория)
+      #    Важно: тут лежит твой index.html
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "."
+
+      # ✅ Публикуем artifact в GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
